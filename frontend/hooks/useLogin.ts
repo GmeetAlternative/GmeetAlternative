@@ -12,6 +12,7 @@ const useLogin = () => {
 
         if (!success) return;
     setLoading(true)
+    //sending login credentials to backend
     try {
         const res = await fetch("http://localhost:4000/api/auth/login" ,{
             method: "POST",

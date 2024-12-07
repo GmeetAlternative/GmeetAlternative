@@ -43,23 +43,23 @@ const Room = () => {
   useEffect(() => {
     if (socket != null) {
       socket.emit('join', roomName);
-      socket.on("created", () => handleRoomCreated(hostRef,userStreamRef, userVideoRef,mediaRecorder,audioChunks,audioBlob,summary,setSummary));
-      socket.on("joined", () => handleRoomJoined(userStreamRef, userVideoRef, socket, roomName,mediaRecorder,audioChunks,audioBlob,summary,setSummary));
+      socket.on("created", () => handleRoomCreated(hostRef,userStreamRef, userVideoRef,mediaRecorder,audioChunks,audioBlob,summary,setSummary)); //handling new room creation
+      socket.on("joined", () => handleRoomJoined(userStreamRef, userVideoRef, socket, roomName,mediaRecorder,audioChunks,audioBlob,summary,setSummary)); //handling joining of a room already created
       socket.on("ready", () => initiateCall(hostRef, rtcConnectionRef, userStreamRef, socket, roomName, () =>
         createPeerConnection(
           (event) => handleICECandidateEvent(event, socket, roomName),
           (event) => handleTrackEvent(event, peerVideoRef)
         )
-      ));
-      socket.on("leave", () => onPeerLeave(hostRef, peerVideoRef, rtcConnectionRef));
+      )); // handling initialisation of call
+      socket.on("leave", () => onPeerLeave(hostRef, peerVideoRef, rtcConnectionRef)); //handling a user leaving the call
       socket.on("offer", (offer) => handleReceivedOffer(offer, hostRef, rtcConnectionRef, userStreamRef, socket, roomName, () =>
         createPeerConnection(
           (event) => handleICECandidateEvent(event, socket, roomName),
           (event) => handleTrackEvent(event, peerVideoRef)
         )
-      ));
-      socket.on('answer', (answer)=>handleAnswer(answer,rtcConnectionRef));
-      socket.on('ice-candidate', (incoming) => handlerNewIceCandidateMsg(incoming, rtcConnectionRef));
+      )); // handling offer receival
+      socket.on('answer', (answer)=>handleAnswer(answer,rtcConnectionRef)); //handling answering of offer recieved
+      socket.on('ice-candidate', (incoming) => handlerNewIceCandidateMsg(incoming, rtcConnectionRef)); //handling new ice candidate message
 
       return () => {
         socket.disconnect();

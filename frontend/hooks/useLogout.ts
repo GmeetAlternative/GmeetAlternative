@@ -7,6 +7,7 @@ const useLogout = () => {
 
   const logout = async() => {
     setLoading(true);
+    //implementing logout feature
     try {
         const res = await fetch("http://localhost:4000/api/auth/logout" , {
             method : "POST",

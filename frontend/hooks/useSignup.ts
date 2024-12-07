@@ -22,6 +22,7 @@ const useSignUp = () => {
         if (!success) return;
 
         setLoading(true);
+        //sending registration credentials to backend
         try {
             const res = await fetch("http://localhost:4000/api/auth/signup" , {
                 method: "POST",

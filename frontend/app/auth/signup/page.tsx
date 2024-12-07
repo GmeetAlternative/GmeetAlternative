@@ -21,7 +21,7 @@ const SignUp = () => {
     const handleSubmit = async (e:any) => {
         e.preventDefault()
         
-        await signup(inputs)  //this is from useSignUp hook
+        await signup(inputs)  //implementing signup 
     }
     if(signedUp){
         router.push('/dashboard')

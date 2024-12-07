@@ -7,6 +7,7 @@ const useSocket=(url:string):Socket|null=>{
     const [socket,setSocket]=useState<Socket|null>(null);
     const router=useRouter();
     var token:string;
+    // implementing socket connection hook
     if(typeof window!=='undefined'){
         const user=localStorage.getItem("user");
         if(!user){

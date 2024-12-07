@@ -16,7 +16,7 @@ const Page = () => {
     }
   },[accessToken, router])
       
-
+  //sending user to the room based on the room name entered
   const joinRoom = () => {
     const targetRoomName=roomName || Math.random().toString(36).slice(2);
     router.push(`/room/${targetRoomName}?roomName=${targetRoomName}`);
