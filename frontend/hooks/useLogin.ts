@@ -4,8 +4,19 @@ import toast from "react-hot-toast";
 const useLogin = () => {
   const [loading, setLoading] = useState(false)
     const [loggedIn, setLoggedIn] = useState(false)
+    const [testData,setTestData] = useState(false)
+  const [testData1,setTestData1] = useState(false)
+  const [testData2,setTestData2] = useState(false)
+  const [testData3,setTestData3] = useState(false)
+//adding useStates hooks
+  //adding useStates hooks
+  //adding useStates hooks
+  //adding useStates hooks
+  //adding useStates hooks
+  //adding useStates hooks
+  //adding useStates hooks
+  //adding useStates hooks
   
-
   const login = async(username:string,password:string) => {
 
     const success = handleInputErrors( username,password)
